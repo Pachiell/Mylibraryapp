@@ -14,7 +14,7 @@
 
 <body>
 	<div class="input-group mb-3">
-		<input type="text" class="form-control" placeholder="検索したい書籍情報を入力してちょんまげ" value="" id="search-input">
+		<input type="text" class="form-control" placeholder="検索したい書籍情報を入力してちょん" value="" id="search-input">
 		<button class="btn btn-outline-secondary" type="button" id="search-button">検索</button>
 	</div>
 	<div id="search-result-word">
