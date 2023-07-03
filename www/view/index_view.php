@@ -48,7 +48,9 @@
             </a>
           </div>
           <div class="col-6">
+            <a href="http://localhost:8080/update.php">
             <img src="./images/f,ldspgiosdgoiz00z.PNG" alt="..." class="btn-img">
+            </a>
           </div>
           <div class="col-6">
             <img src="./images/searchbooks.PNG" alt="..." class="btn-img">

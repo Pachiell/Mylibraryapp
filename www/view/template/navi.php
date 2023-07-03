@@ -49,7 +49,7 @@
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="[検索]" aria-label="Search">
-        <button class="btn btn-primary" type="submit">Search</button>
+        <button class="btn btn-success" type="submit">Search</button>
       </form>
     </div>
   </div>
