@@ -35,7 +35,7 @@
     text-align: center;
     font-size:30px;
     transform:skewX(-10deg);
-    text-decoration:underline;
+    text-decoration:underline; 
 }
 p.box {
     border-bottom: 1px solid red;
