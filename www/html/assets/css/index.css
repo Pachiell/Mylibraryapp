@@ -1,44 +1,48 @@
 .Navigator {
     position: fixed;
-    width: 100%; 
+    width: 100%;
     height: 35px;
     z-index: 289;
 }
 
 .header-image {
-    width:100%;
+    width: 100%;
     object-fit: cover;
     height: 250px;
 }
+
 .header p {
-    
-        position: absolute;
-        top:20%;
-        left:50%;
-        transform: translate(-50%,-50%);
-        padding:100px;
-        margin:0px;
-        font-size:30px;
-        color: #FFFF99;
-        font-family: serif;
-    
+
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 100px;
+    margin: 0px;
+    font-size: 30px;
+    color: #FFFF99;
+    font-family: serif;
+
 }
-.center-topics{
+
+.center-topics {
     text-align: center;
     width: 60%;
     margin: 0 auto;
     max-width: 60%;
-    
+
 
 }
-.center-topics2{
+
+.center-topics2 {
     text-align: center;
     width: 60%;
     margin: 0 auto;
     max-width: 60%;
-    
+
 
 }
+
 .center p {
     background-color: rgb(78, 162, 196);
     text-align: center;
@@ -47,16 +51,23 @@
     color: #4ee6a1;
     transform: skewX(-20deg)
 }
-.footer  p{
-    font-size:24px;
+
+.footer p {
+    font-size: 24px;
     font-family: serif;
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 30px;
     background-color: #c3c3c4;
-    }
-    .text-muted {
+}
+
+.text-muted {
     margin: 10px 0;
-    }
-     
+}
+
+
+.btn-img:hover{
+  opacity: 0.6;
+  transition: 0.8s;
+}

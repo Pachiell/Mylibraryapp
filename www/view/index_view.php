@@ -25,7 +25,6 @@
   </div>
   <div class="header">
     <img src="./images/dksjfioajoigajsgoi.PNG" alt="" class="header-image">
-    <p><?php echo $userName ?>さんのアーカイブ</p>
   </div>
   <div class="center">
     <p><最新トピックス></p>
@@ -43,17 +42,19 @@
     <div class="center-topics">
       <div class="container overflow-hidden">
         <div class="row gy-5">
-          <div class="col-6">
-            <img src="./images/ddsgkos@cxvjasd.PNG" alt="...">
+          <div class="col-6" >
+            <a href="http://localhost:8080/library.php">
+            <img src="./images/ddsgkos@cxvjasd.PNG" alt="..." class="btn-img">
+            </a>
           </div>
           <div class="col-6">
-            <img src="./images/f,ldspgiosdgoiz00z.PNG" alt="...">
+            <img src="./images/f,ldspgiosdgoiz00z.PNG" alt="..." class="btn-img">
           </div>
           <div class="col-6">
-            <img src="./images/searchbooks.PNG" alt="...">
+            <img src="./images/searchbooks.PNG" alt="..." class="btn-img">
           </div>
           <div class="col-6">
-            <img src="./images/trend analysis.PNG" alt="...">
+            <img src="./images/trend analysis.PNG" alt="..." class="btn-img">
           </div>
         </div>
       </div>
