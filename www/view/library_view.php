@@ -24,8 +24,8 @@
       <th scope="col">No.</th>
       <th scope="col">作品名</th>
       <th scope="col">著者</th>
-      <th scope="col">イラスト</th>
       <th scope="col">出版社</th>
+      <th scope="col">発行日</th>
       <th scope="col">カテゴリ</th>
       <th scope="col">読了巻数</th>
       <th scope="col">イメージ</th>

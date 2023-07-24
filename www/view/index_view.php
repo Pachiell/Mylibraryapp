@@ -27,7 +27,9 @@
     <img src="./images/dksjfioajoigajsgoi.PNG" alt="" class="header-image">
   </div>
   <div class="center">
-    <p><最新トピックス></p>
+    <p>
+      <最新トピックス>
+    </p>
     <div class="center-topics">
       <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action list-group-item-info">The current button</a>
@@ -42,21 +44,25 @@
     <div class="center-topics">
       <div class="container overflow-hidden">
         <div class="row gy-5">
-          <div class="col-6" >
+          <div class="col-6">
             <a href="http://localhost:8080/library.php">
-            <img src="./images/ddsgkos@cxvjasd.PNG" alt="..." class="btn-img">
+              <img src="./images/ddsgkos@cxvjasd.PNG" alt="..." class="btn-img">
             </a>
           </div>
           <div class="col-6">
             <a href="http://localhost:8080/update.php">
-            <img src="./images/f,ldspgiosdgoiz00z.PNG" alt="..." class="btn-img">
+              <img src="./images/f,ldspgiosdgoiz00z.PNG" alt="..." class="btn-img">
             </a>
           </div>
           <div class="col-6">
-            <img src="./images/searchbooks.PNG" alt="..." class="btn-img">
+            <a href="http://localhost:8080/search.php">
+              <img src="./images/searchbooks.PNG" alt="..." class="btn-img">
+            </a>
           </div>
           <div class="col-6">
-            <img src="./images/trend analysis.PNG" alt="..." class="btn-img">
+            <a href="#">
+              <img src="./images/trend analysis.PNG" alt="..." class="btn-img">
+            </a>
           </div>
         </div>
       </div>
@@ -64,16 +70,17 @@
 </body>
 
 <footer>
-<br></br>
-<br></br>
-<?php $year = date('Y');?>
+  <br></br>
+  <br></br>
+  <?php $year = date('Y'); ?>
 
-<footer class="footer">
-  <h2>
-	<div class="container text-center">
-	  <p class="text-muted">©︎<?php echo $year;?> Copyright © MYLIBRARY APP. All Rights Reserved.</p>
-	</div>
-  </h2>
-</footer>
- </div>
+  <footer class="footer">
+    <h2>
+      <div class="container text-center">
+        <p class="text-muted">©︎<?php echo $year; ?> Copyright © MYLIBRARY APP. All Rights Reserved.</p>
+      </div>
+    </h2>
+  </footer>
+  </div>
+
 </html>

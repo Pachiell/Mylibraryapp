@@ -30,16 +30,7 @@
     width: 60%;
     margin: 0 auto;
     max-width: 60%;
-
-
-}
-
-.center-topics2 {
-    text-align: center;
-    width: 60%;
-    margin: 0 auto;
-    max-width: 60%;
-
+    overflow: auto;
 
 }
 
