@@ -10,6 +10,7 @@ const getBooksInfo = async (searcText) => {
 // await = 非同期処理の完了を待つ　async関数内でしか使えない
 // `${}`　文字列内に変数を埋め込む書き方
 // 1､html（入れる場所）　2､要素の取得（ルート）　3､取得した要素の処理
+//axios　ライブラリ fetch関数を簡単にしたやーつ
 
 const createBookslist = async (searcText) => {
   const libraryElement = $("#library");
