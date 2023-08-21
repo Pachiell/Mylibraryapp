@@ -44,8 +44,30 @@ $(function () {
 
     $(document).on("click", "#add-archive", function () {
         const targetId = $(this).parent().parent().attr("id");
-        const targetBookInfo=booksInfo.find(bookInfo => bookInfo.id === targetId);
+        const targetBookInfo = booksInfo.find(bookInfo => bookInfo.id === targetId);
         console.warn(targetBookInfo);
+        const fetchData = {
+            title: `${targetBookInfo?.volumeInfo?.title} ${targetBookInfo?.volumeInfo?.subtitle || ""}`,
+            authors: targetBookInfo?.volumeInfo?.authors[0] || "",
+            publisher: targetBookInfo?.volumeInfo?.publisher || "",
+            publishedDate: targetBookInfo?.volumeInfo?.publishedDate || "",
+            image: targetBookInfo?.volumeInfo?.imageLinks?.smallThumbnail || targetBookInfo?.volumeInfo?.imageLinks?.thumbnail || "(Not Found)",
+            id: targetBookInfo?.id || "",
+        };
+        fetch("add_bookinfo.php",
+            {
+                method: 'POST', // HTTP-メソッドを指定
+                headers: { 'Content-Type': 'application/json' }, // jsonを指定
+                body: JSON.stringify(fetchData),
+            }
+        ).then(response => response.json()) // 返ってきたレスポンスをjsonで受け取って次のthenへ渡す
+            .then(res => {
+                console.log(res); // やりたい処理
+            })
+            .catch(error => {
+                console.log(error); // エラー表示
+            });
+
     });
 
 });
