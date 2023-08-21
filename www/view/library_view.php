@@ -32,23 +32,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="table-secondary">
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>unko</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr class="table-secondary">
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <?php foreach ($archives as $archive) : ?>
+      <tr class="table-secondary">
+      <td><?php echo $archive["id"] ?></td>
+      <td><?php echo $archive["title"] ?></td>
+      <td><?php echo $archive["authors"] ?></td>
+      <td><?php echo $archive["publisher"] ?></td>
+      <td><?php echo $archive["issue"] ?></td>
+      <td><?php echo "カテゴリ" ?></td>
+      <td><?php echo "読了巻数" ?></td>
+      <td><img src=<?php echo $archive["image"] ?>></td>
+      </tr>
+      <?php endforeach ?>
   </tbody>
 </table>
