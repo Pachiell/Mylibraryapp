@@ -53,6 +53,7 @@ $(function () {
             publishedDate: targetBookInfo?.volumeInfo?.publishedDate || "",
             image: targetBookInfo?.volumeInfo?.imageLinks?.smallThumbnail || targetBookInfo?.volumeInfo?.imageLinks?.thumbnail || "(Not Found)",
             id: targetBookInfo?.id || "",
+            site: targetBookInfo?.volumeInfo?.infoLink || "",
         };
         fetch("add_bookinfo.php",
             {
