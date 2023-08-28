@@ -17,3 +17,45 @@
 .table-dark{
     text-align: center;
 }
+.icon-hidden {
+    display: none;
+  }
+
+  .icon-shine {
+    animation: shine 1s;
+  }
+
+  @keyframes shine {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .tablesorter-headerUnSorted {
+    background-image: url('http://drive.google.com/uc?export=view&id=1z0n4kkkPB1fzUYP4sZ5OEPaDvyQAFFF1');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+.tablesorter-headerAsc {
+    background-image: url('http://drive.google.com/uc?export=view&id=1_rvWAXNUFbzhGmG5lX4pnXVyO86O50lK');
+    background-repeat: no-repeat;
+    background-position: center right;
+    border-bottom: #af0f0f 2px solid;
+}
+.tablesorter-headerDesc {
+    background-image: url('http://drive.google.com/uc?export=view&id=1KN25lrtBfBMS5rN2pzDD9ZK7q156K0Dq');
+    background-repeat: no-repeat;
+    background-position: center right;
+    border-bottom: #c20808 2px solid;
+}
+.sorter-false {
+    background-image: none;
+}

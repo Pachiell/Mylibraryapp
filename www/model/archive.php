@@ -7,14 +7,15 @@ class Archive extends connect
     }
     public function createArchive($data)
     {
-        $stmt = $this->dbh->prepare("INSERT INTO archive (title,authors,publisher,issue,image,book_id) 
-    VALUES (:title,:authors,:publisher,:issue,:image,:book_id)");
+        $stmt = $this->dbh->prepare("INSERT INTO archive (title,authors,publisher,issue,image,book_id,site) 
+    VALUES (:title,:authors,:publisher,:issue,:image,:book_id,:site)");
         $stmt->bindParam(':title', $data["title"], PDO::PARAM_STR);
         $stmt->bindParam(':authors', $data["authors"], PDO::PARAM_STR);
         $stmt->bindParam(':publisher', $data["publisher"], PDO::PARAM_STR);
         $stmt->bindParam(':issue', $data["publishedDate"], PDO::PARAM_STR);
         $stmt->bindParam(':image', $data["image"], PDO::PARAM_STR);
         $stmt->bindParam(':book_id', $data["id"], PDO::PARAM_STR);
+        $stmt->bindParam(':site', $data["site"], PDO::PARAM_STR);
         $stmt->execute();
     }
 
