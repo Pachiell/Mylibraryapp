@@ -51,7 +51,7 @@
           </div>
           <div class="col-6">
             <a href="http://localhost:8080/update.php">
-              <img src="./images/f,ldspgiosdgoiz00z.PNG" alt="..." class="btn-img">
+              <img src="./images/editdata.PNG" alt="..." class="btn-img">
             </a>
           </div>
           <div class="col-6">
@@ -61,7 +61,7 @@
           </div>
           <div class="col-6">
             <a href="#">
-              <img src="./images/trend analysis.PNG" alt="..." class="btn-img">
+              <img src="./images/bookmark.PNG" alt="..." class="btn-img">
             </a>
           </div>
         </div>
