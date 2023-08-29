@@ -60,7 +60,7 @@
             </a>
           </div>
           <div class="col-6">
-            <a href="#">
+            <a href="http://localhost:8080/bookmark.php">
               <img src="./images/bookmark.PNG" alt="..." class="btn-img">
             </a>
           </div>
