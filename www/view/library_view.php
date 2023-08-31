@@ -41,7 +41,7 @@
     <?php foreach ($archives as $archive) : ?>
       <tr class="table-secondary">
         <td><?php echo $archive["id"] ?></td>
-        <td><button class="btn bookmark-btn"> <i class="fa fa-star"></i></td>
+        <td><button class="btn bookmark-btn" id="save-archive" data-archive-id=<?php echo $archive["id"] ?>> <i class="fa fa-star <?php echo $archive["No"] == null ? 'icon-hidden' : 'icon-shine' ?>"></i></td>
         <td><?php echo $archive["title"] ?></td>
         <td><?php echo $archive["authors"] ?></td>
         <td><?php echo $archive["publisher"] ?></td>

@@ -22,7 +22,7 @@
 	<table class="table">
 		<thead>
 			<tr>
-			<th scope="col"></th>
+				<th scope="col"></th>
 				<th scope="col">タイトル</th>
 				<th scope="col">プロローグ</th>
 				<th scope="col">発行日</th>

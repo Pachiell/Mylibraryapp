@@ -1,5 +1,4 @@
 let booksInfo;
-
 const getBooksInfo = async (searcText) => {
     const res = await axios
         .get(`https://www.googleapis.com/books/v1/volumes?q=${searcText}`)
