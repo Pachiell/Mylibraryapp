@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>書庫-Library</title>
+  <title>ブックマーク</title>
   <?php include('../view/template/library.php'); ?>
   <div class="Navigator">
     <?php include('../view/template/navi.php'); ?>
@@ -16,18 +16,18 @@
 </head>
 
 <body>
-<table class="table table-bordered border-dark" id="fav-table">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">レビュー</th>
-      <th scope="col">作品名</th>
-      <th scope="col">著者</th>
-      <th scope="col">出版社</th>
-      <th scope="col">発行日</th>
-      <th scope="col">カテゴリ</th>
-      <th scope="col">イメージ</th>
-      <th scope="col">コメント</th>
-    </tr>
-  </thead>
-  <tbody>
+  <table class="table table-bordered border-dark" id="fav-table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">レビュー</th>
+        <th scope="col">作品名</th>
+        <th scope="col">著者</th>
+        <th scope="col">出版社</th>
+        <th scope="col">発行日</th>
+        <th scope="col">カテゴリ</th>
+        <th scope="col">イメージ</th>
+        <th scope="col">コメント</th>
+      </tr>
+    </thead>
+    <tbody>

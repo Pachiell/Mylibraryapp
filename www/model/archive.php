@@ -5,7 +5,7 @@ class Archive extends connect
     {
         parent::__construct();
     }
-    public function createArchive($userId,$data)
+    public function createArchive($userId, $data)
     {
         $stmt = $this->dbh->prepare("INSERT INTO archive (title,authors,publisher,issue,image,book_id,user_id,site) 
     VALUES (:title,:authors,:publisher,:issue,:image,:book_id,:user_id,:site)");
@@ -22,10 +22,22 @@ class Archive extends connect
 
     public function find($userId)
     {
-        $stmt = $this->dbh->prepare("SELECT * FROM archive WHERE user_id=:user_id");
+        $stmt = $this->dbh->prepare("SELECT archive.id,archive.title,archive.authors,archive.publisher,archive.issue,archive.category,archive.image,archive.book_id,archive.user_id,archive.site,bookmark.No,bookmark.is_delete FROM archive LEFT JOIN bookmark ON archive.id = bookmark.id WHERE archive.user_id=:user_id");
         $stmt->bindParam(":user_id", $userId, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($result) {
+            return $result;
+        }
+        return null;
+    }
+
+    public function searchId($data)
+    {
+        $stmt = $this->dbh->prepare("SELECT * FROM archive WHERE id=:id");
+        $stmt->bindParam(":id", $data["id"], PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($result) {
             return $result;
         }

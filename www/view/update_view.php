@@ -33,13 +33,13 @@
 </div>
 <br>
 <div class="booklabel">
-<p><?php echo $userName ?>さんはこの作品を〇〇巻読んでいます</p>
+    <p><?php echo $userName ?>さんはこの作品を〇〇巻読んでいます</p>
 </div>
 <p class="box"> 〇〇巻のあらすじ </p>
 
 <!-- 巻数あらすじを読み込む -->
 
 <div class="update">
-  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="更新巻数">
-  <button type="button" class="btn btn-primary">更新</button>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="更新巻数">
+    <button type="button" class="btn btn-primary">更新</button>
 </div>
