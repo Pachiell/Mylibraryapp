@@ -1,37 +1,44 @@
 <?php
-class Bookmark extends connect
+
+class Bookmark extends Connect
 {
+    public $bookmarkSchema;
+    public $bookmarkColumns;
+
     public function __construct()
     {
         parent::__construct();
+
+        $this->bookmarkSchema = [
+            "table" => "bookmarks",
+            "columns" => [
+                "id" => ["pdo_type" => PDO::PARAM_INT],
+                "archive_id" => ["pdo_type" => PDO::PARAM_INT],
+                "review" => ["pdo_type" => PDO::PARAM_STR],
+                "title" => ["pdo_type" => PDO::PARAM_STR],
+                "authors" => ["pdo_type" => PDO::PARAM_STR],
+                "publisher" => ["pdo_type" => PDO::PARAM_STR],
+                "issue_date" => ["pdo_type" => PDO::PARAM_STR],
+                "category" => ["pdo_type" => PDO::PARAM_STR],
+                "image_url" => ["pdo_type" => PDO::PARAM_STR],
+                "book_id" => ["pdo_type" => PDO::PARAM_STR],
+                "user_id" => ["pdo_type" => PDO::PARAM_INT],
+                "purchase_url" => ["pdo_type" => PDO::PARAM_STR],
+                "is_delete" => ["pdo_type" => PDO::PARAM_INT],
+            ],
+        ];
+        $this->bookmarkColumns = $this->bookmarkSchema["columns"];
     }
 
-    public function saveBookmark($result)
+    public function createBookmark($queryData)
     {
-        $stmt = $this->dbh->prepare("INSERT INTO bookmark (id,title,authors,publisher,issue,image,book_id,user_id,site,is_delete) 
-    VALUES (:id,:title,:authors,:publisher,:issue,:image,:book_id,:user_id,:site,0)");
-        $stmt->bindParam(':id', $result["id"], PDO::PARAM_INT);
-        $stmt->bindParam(':title', $result["title"], PDO::PARAM_STR);
-        $stmt->bindParam(':authors', $result["authors"], PDO::PARAM_STR);
-        $stmt->bindParam(':publisher', $result["publisher"], PDO::PARAM_STR);
-        $stmt->bindParam(':issue', $result["issue"], PDO::PARAM_STR);
-        $stmt->bindParam(':image', $result["image"], PDO::PARAM_STR);
-        $stmt->bindParam(':book_id', $result["book_id"], PDO::PARAM_STR);
-        $stmt->bindParam(':user_id', $result["user_id"], PDO::PARAM_INT);
-        $stmt->bindParam(':site', $result["site"], PDO::PARAM_STR);
-
-        $stmt->execute();
-
-        // $stmt = $this->dbh->prepare("UPDATE bookmark SET is_delete=:is_delete WHERE is_delete=NULL");
-        // $stmt->bindParam(':is_delete', "delete", PDO::PARAM_STR);
-        // $stmt->execute();
+        $this->insertQuery($queryData, $this->bookmarkSchema);
     }
 
-    public function updateBookmark($result)
+    public function updateBookmark($archiveId)
     {
-        $stmt = $this->dbh->prepare("UPDATE bookmark SET is_delete=1 WHERE id=:id");
-        $stmt->bindParam(':id', $result["id"], PDO::PARAM_INT);
-
+        $stmt = $this->dbh->prepare("UPDATE bookmarks SET is_delete = 1 WHERE archive_id=:archive_id");
+        $stmt->bindParam(":archive_id", $archiveId, $this->bookmarkColumns["archive_id"]["pdo_type"]);
         $stmt->execute();
     }
 }

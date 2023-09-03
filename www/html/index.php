@@ -1,8 +1,7 @@
 <?php
-
-include '../model/connect.php';
-include '../model/user.php';
-include '../model/secure.php';
+include './auth/secure.php';
+include '../class/Connect.php';
+include '../model/User.php';
 
 
 $userName = $_SESSION["name"];

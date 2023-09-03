@@ -1,5 +1,5 @@
 <?php
-include '../model/secure.php';
+include './auth/secure.php';
 
 $userId = $_SESSION['user_id'];
 
