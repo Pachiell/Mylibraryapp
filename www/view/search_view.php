@@ -7,15 +7,15 @@
 	<title>検索</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="./assets/css/search.css" rel="stylesheet">
-	<?php include('../view/template/library.php'); ?>
-	<script src="../assets/js/search.js" type="text/javascript">
+	<link href="./_assets/css/search.css" rel="stylesheet">
+	<?php include('../view/_template/lib.php'); ?>
+	<script src="../_assets/js/search.js" type="text/javascript">
 	</script>
 </head>
 
 <body>
 	<div class="Navigator">
-		<?php include('../view/template/navi.php'); ?>
+		<?php include('../view/_template/navi.php'); ?>
 	</div>
 	<div class="mb-3">
 		<label for="exampleFormControlInput1" class="form-label">書籍に追加する本を検索</label>

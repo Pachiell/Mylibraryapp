@@ -1,5 +1,5 @@
 <?php
-class Auth extends connect
+class Auth extends Connect
 {
 
     public function __construct()

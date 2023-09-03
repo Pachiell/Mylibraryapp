@@ -1,29 +1,40 @@
 <?php
-class Archive extends connect
+class Archive extends Connect
 {
+    public $archiveSchema;
+    public $archiveColumns;
+
     public function __construct()
     {
         parent::__construct();
-    }
-    public function createArchive($userId, $data)
-    {
-        $stmt = $this->dbh->prepare("INSERT INTO archive (title,authors,publisher,issue,image,book_id,user_id,site) 
-    VALUES (:title,:authors,:publisher,:issue,:image,:book_id,:user_id,:site)");
-        $stmt->bindParam(':title', $data["title"], PDO::PARAM_STR);
-        $stmt->bindParam(':authors', $data["authors"], PDO::PARAM_STR);
-        $stmt->bindParam(':publisher', $data["publisher"], PDO::PARAM_STR);
-        $stmt->bindParam(':issue', $data["publishedDate"], PDO::PARAM_STR);
-        $stmt->bindParam(':image', $data["image"], PDO::PARAM_STR);
-        $stmt->bindParam(':book_id', $data["id"], PDO::PARAM_STR);
-        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
-        $stmt->bindParam(':site', $data["site"], PDO::PARAM_STR);
-        $stmt->execute();
+
+        $this->archiveSchema =  [
+            "table" => "archives",
+            "columns" => [
+                "id" => ["pdo_type" => PDO::PARAM_INT],
+                "title" => ["pdo_type" => PDO::PARAM_STR],
+                "authors" => ["pdo_type" => PDO::PARAM_STR],
+                "publisher" => ["pdo_type" => PDO::PARAM_STR],
+                "issue_date" => ["pdo_type" => PDO::PARAM_STR],
+                "image_url" => ["pdo_type" => PDO::PARAM_STR],
+                "book_id" => ["pdo_type" => PDO::PARAM_STR],
+                "user_id" => ["pdo_type" => PDO::PARAM_INT],
+                "purchase_url" => ["pdo_type" => PDO::PARAM_STR],
+            ],
+        ];
+
+        $this->archiveColumns = $this->archiveSchema["columns"];
     }
 
-    public function find($userId)
+    public function createArchive($queryData)
     {
-        $stmt = $this->dbh->prepare("SELECT archive.id,archive.title,archive.authors,archive.publisher,archive.issue,archive.category,archive.image,archive.book_id,archive.user_id,archive.site,bookmark.No,bookmark.is_delete FROM archive LEFT JOIN bookmark ON archive.id = bookmark.id WHERE archive.user_id=:user_id");
-        $stmt->bindParam(":user_id", $userId, PDO::PARAM_INT);
+        $this->insertQuery($queryData, $this->archiveSchema);
+    }
+
+    public function getArchives($userId)
+    {
+        $stmt = $this->dbh->prepare("SELECT archives.id,archives.title,archives.authors,archives.publisher,archives.issue_date,archives.category,archives.image_url,archives.book_id,archives.user_id,archives.purchase_url,bookmarks.archive_id FROM archives LEFT JOIN bookmarks ON archives.id = bookmarks.archive_id AND is_delete = 0 WHERE archives.user_id=:user_id");
+        $stmt->bindParam(":user_id", $userId, $this->archiveColumns["user_id"]["pdo_type"]);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if ($result) {
@@ -32,10 +43,10 @@ class Archive extends connect
         return null;
     }
 
-    public function searchId($data)
+    public function getArchive($id)
     {
-        $stmt = $this->dbh->prepare("SELECT * FROM archive WHERE id=:id");
-        $stmt->bindParam(":id", $data["id"], PDO::PARAM_INT);
+        $stmt = $this->dbh->prepare("SELECT * FROM archives WHERE id=:id");
+        $stmt->bindParam(":id", $id, $this->archiveColumns["id"]["pdo_type"]);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($result) {

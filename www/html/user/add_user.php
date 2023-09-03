@@ -1,6 +1,6 @@
 <?php
-include '../model/connect.php';
-include '../model/user.php';
+include '../../class/Connect.php';
+include '../../model/User.php';
 
 $errMsg = [];
 
@@ -9,12 +9,12 @@ if (!empty($_POST['name']) && !empty($_POST['password']) && !empty($_POST['email
   $password = $_POST['password'];
   $email = $_POST['email'];
   $user = new User();
-  $dupEmailUser = $user->SerchUser($email);
+  $dupEmailUser = $user->getUser($email);
   if (!$dupEmailUser) {
-    $user->CreateUser($name, $password, $email);
+    $user->createUser($name, $password, $email);
     header('Location: index.php');
   } else {
-    $errMsg["dupEmailUser"] = "このメールアドレスは使用されています";
+    $errMsg["dupEmailUser"] = "このメールアドレスは使用されています。";
   }
 } else if (!empty($_POST)) {
   if (!empty($_POST['name'])) {
@@ -39,5 +39,4 @@ if (!empty($_POST['name']) && !empty($_POST['password']) && !empty($_POST['email
   }
 }
 
-
-include_once "../view/new_user_view.php";
+include_once "../../view/user/add_user_view.php";

@@ -7,8 +7,8 @@
 	<title>書籍情報</title>
 
 	<!-- Bootstrap core CSS -->
-	<?php include('../view/template/library.php'); ?>
-	<script src="../assets/js/sample.js" type="text/javascript">
+	<?php include('../view/_template/lib.php'); ?>
+	<script src="../_assets/js/sample.js" type="text/javascript">
 	</script>
 </head>
 
@@ -32,7 +32,6 @@
 		<tbody id="library">
 		</tbody>
 	</table>
-
 </body>
 
 </html>

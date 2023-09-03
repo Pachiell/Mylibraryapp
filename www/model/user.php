@@ -1,103 +1,53 @@
 <?php
-class User extends connect
+class User extends Connect
 {
-    private $userInfo;
+    public $userSchema;
+    public $userColumns;
 
     public function __construct()
     {
         parent::__construct();
+
+        $this->userSchema = [
+            "table" => "users",
+            "columns" => [
+                "id" => ["pdo_type" => PDO::PARAM_INT],
+                "name" => ["pdo_type" => PDO::PARAM_STR],
+                "password" => ["pdo_type" => PDO::PARAM_STR],
+                "email" => ["pdo_type" => PDO::PARAM_STR],
+            ],
+        ];
+
+        $this->userColumns = $this->userSchema["columns"];
     }
 
-    public function setUserInfo(UserInfo $userInfo)
+    public function updateUser($name, $password, $email)
     {
-        $this->userInfo = $userInfo;
-    }
-
-    public function save()
-    {
-        $email = $this->userInfo->getEmail();
-        $name = $this->userInfo->getName();
-        $password = $this->userInfo->getPassword();
-
-        //todo::変更しているEメールアドレスが既に存在しないかをチェックする　ある場合は当人のアドレスであるかを確認 セッションID（宿題）
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->dbh->prepare("UPDATE users SET name=:name, password=:password, email=:email WHERE email=:email");
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, $this->userColumns["email"]["pdo_type"]);
+        $stmt->bindParam(':name', $name, $this->userColumns["name"]["pdo_type"]);
+        $stmt->bindParam(':password', $passwordHash, $this->userColumns["password"]["pdo_type"]);
         $stmt->execute();
     }
 
-    public function CreateUser($name, $password, $email)
+    public function createUser($name, $password, $email)
     {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->dbh->prepare("INSERT INTO users (name, email, password) 
         VALUES (:name, :email, :password)");
-        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':password', $passwordHash, PDO::PARAM_STR);
+        $stmt->bindParam(':name', $name, $this->userColumns["name"]["pdo_type"]);
+        $stmt->bindParam(':email', $email, $this->userColumns["email"]["pdo_type"]);
+        $stmt->bindParam(':password', $passwordHash, $this->userColumns["password"]["pdo_type"]);
         $stmt->execute();
     }
-    public function SerchUser($email)
+
+    public function getUser($email)
     {
         $stmt = $this->dbh->prepare("SELECT * FROM users WHERE email=:email");
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, $this->userColumns["email"]["pdo_type"]);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
-    }
-}
-class UserInfo extends connect
-{
-    private $name = null;
-    private $password = null;
-    private $email = null;
-
-    public function save()
-    {
-        $user = new User();
-        $user->setUserInfo($this);
-        $user->save();
-    }
-
-    public function getLoginUserInfo($email)
-    {
-        $stmt = $this->dbh->prepare("SELECT * FROM users WHERE email=:email");
-        $stmt->bindParam(':email', $email, PDO::PARAM_INT);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($result) {
-            return $result;
-        }
-        return null;
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    public function setPassword($password)
-    {
-        $this->name = $password;
     }
 }
