@@ -41,7 +41,7 @@
 						</a>
 					</div>
 					<div class="col-6">
-						<a href="../../update.php">
+						<a href="../../archive/edit_archive.php">
 							<img src="./_assets/images/editdata.PNG" alt="..." class="btn-img">
 						</a>
 					</div>

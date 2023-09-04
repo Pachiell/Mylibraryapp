@@ -16,6 +16,7 @@ class Archive extends Connect
                 "authors" => ["pdo_type" => PDO::PARAM_STR],
                 "publisher" => ["pdo_type" => PDO::PARAM_STR],
                 "issue_date" => ["pdo_type" => PDO::PARAM_STR],
+                "category" => ["pdo_type" => PDO::PARAM_STR],
                 "image_url" => ["pdo_type" => PDO::PARAM_STR],
                 "book_id" => ["pdo_type" => PDO::PARAM_STR],
                 "user_id" => ["pdo_type" => PDO::PARAM_INT],
@@ -33,7 +34,7 @@ class Archive extends Connect
 
     public function getArchives($userId)
     {
-        $stmt = $this->dbh->prepare("SELECT archives.id,archives.title,archives.authors,archives.publisher,archives.issue_date,archives.category,archives.image_url,archives.book_id,archives.user_id,archives.purchase_url,bookmarks.archive_id FROM archives LEFT JOIN bookmarks ON archives.id = bookmarks.archive_id AND is_delete = 0 WHERE archives.user_id=:user_id");
+        $stmt = $this->dbh->prepare("SELECT archives.id,archives.title,archives.authors,archives.publisher,archives.issue_date,archives.category,archives.image_url,archives.book_id,archives.user_id,archives.purchase_url,archives.is_delete,bookmarks.archive_id FROM archives LEFT JOIN bookmarks ON archives.id = bookmarks.archive_id AND bookmarks.is_delete = 0 WHERE archives.user_id=:user_id AND archives.is_delete = 0");
         $stmt->bindParam(":user_id", $userId, $this->archiveColumns["user_id"]["pdo_type"]);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -53,5 +54,23 @@ class Archive extends Connect
             return $result;
         }
         return null;
+    }
+    public function updateArchive($queryData)
+    {
+        $stmt = $this->dbh->prepare("UPDATE archives SET title=:title,authors=:authors,publisher=:publisher,issue_date=:issue_date,image_url=:image_url,category=:category WHERE id=:id");
+        $stmt->bindParam(":id", $queryData["id"], $this->archiveColumns["id"]["pdo_type"]);
+        $stmt->bindParam(":title", $queryData["title"], $this->archiveColumns["title"]["pdo_type"]);
+        $stmt->bindParam(":authors", $queryData["authors"], $this->archiveColumns["authors"]["pdo_type"]);
+        $stmt->bindParam(":publisher", $queryData["publisher"], $this->archiveColumns["publisher"]["pdo_type"]);
+        $stmt->bindParam(":issue_date", $queryData["issue_date"], $this->archiveColumns["issue_date"]["pdo_type"]);
+        $stmt->bindParam(":image_url", $queryData["image_url"], $this->archiveColumns["image_url"]["pdo_type"]);
+        $stmt->bindParam(":category", $queryData["category"], $this->archiveColumns["category"]["pdo_type"]);
+        $stmt->execute();
+    }
+    public function deleteArchive($queryData)
+    {
+        $stmt = $this->dbh->prepare("UPDATE archives SET is_delete = 1 WHERE id=:id");
+        $stmt->bindParam(':id', $queryData["id"], $this->archiveColumns["id"]["pdo_type"]);
+        $stmt->execute();
     }
 }

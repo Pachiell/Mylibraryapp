@@ -34,23 +34,30 @@
 			<th scope="col">カテゴリ</th>
 			<th scope="col">イメージ</th>
 			<th scope="col">購入画面</th>
+			<th scope="col">編集</th>
 		</tr>
 	</thead>
 	<tbody>
 		<script src="../_assets/js/archive.js" type="text/javascript"></script>
 		<?php foreach ($archives as $archive) : ?>
-		<tr class="table-secondary">
-			<td><?php echo $archive["id"] ?></td>
-			<td><button class="btn bookmark-btn" id="save-archive" data-archive-id=<?php echo $archive["id"] ?>> <i
-						class="fa fa-star <?php echo $archive["archive_id"] == null ? 'icon-hidden' : 'icon-shine' ?>"></i></td>
-			<td><?php echo $archive["title"] ?></td>
-			<td><?php echo $archive["authors"] ?></td>
-			<td><?php echo $archive["publisher"] ?></td>
-			<td><?php echo $archive["issue_date"] ?></td>
-			<td><?php echo $archive["category"] ?></td>
-			<td><img src=<?php echo $archive["image_url"] ?>></td>
-			<td><a class="icon-link" href=<?php echo $archive["purchase_url"] ?>>移動する</a></td>
-		</tr>
+			<tr class="table-secondary">
+				<td><?php echo $archive["id"] ?></td>
+				<td><button class="btn bookmark-btn" id="save-archive" data-archive-id=<?php echo $archive["id"] ?>> <i class="fa fa-star <?php echo $archive["archive_id"] == null ? 'icon-hidden' : 'icon-shine' ?>"></i></td>
+				<td><?php echo $archive["title"] ?></td>
+				<td><?php echo $archive["authors"] ?></td>
+				<td><?php echo $archive["publisher"] ?></td>
+				<td><?php echo $archive["issue_date"] ?></td>
+				<td><?php echo $archive["category"] ?></td>
+				<td><img src=<?php echo $archive["image_url"] ?>></td>
+				<td><a class="icon-link" href=<?php echo $archive["purchase_url"] ?>>移動する</a></td>
+				<td>
+					<form method="GET" action="edit_archive.php">
+						<input class="btn btn-success" type="submit" value="編集" >
+						<input type="hidden" name="id" value=<?php echo $archive["id"] ?>>
+					</form>
+				</td>
+
+			</tr>
 		<?php endforeach ?>
 	</tbody>
 </table>

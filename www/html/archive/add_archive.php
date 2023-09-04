@@ -22,6 +22,6 @@ $queryData = [
 	"user_id" => $userId,
 	"purchase_url" =>  $fetchData["purchase_url"]
 ];
-$archive->createArchive($userId, $queryData);
+$archive->createArchive($queryData);
 
 echo json_encode($fetchData);
