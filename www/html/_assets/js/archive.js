@@ -26,6 +26,7 @@ $(document).ready(function () {
       1: { sorter: false },
       7: { sorter: false },
       8: { sorter: false },
+      9: { sorter: false },
     },
   });
 });

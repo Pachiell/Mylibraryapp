@@ -19,7 +19,7 @@ class Connect
     $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
   }
   
-  /** join等行わず単体のテーブルにレコードを追加する場合に使用可能
+  /** 
 	 * @param
 	 * $queryData = [columnName => data, ...]
 	 * $schema = 該当モデルで定義しているスキーマ

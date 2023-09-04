@@ -19,7 +19,7 @@ class Auth extends Connect
             $_SESSION['email'] = $result['email'];
             $_SESSION['name'] = $result['name'];
             $_SESSION['user_id'] = $result['id'];
-            header('Location: index.php');
+            header('Location: ../index.php');
         } else {
             return "ログインできませんでした。";
         }
