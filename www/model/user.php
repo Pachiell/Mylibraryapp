@@ -21,14 +21,15 @@ class User extends Connect
         $this->userColumns = $this->userSchema["columns"];
     }
 
-    public function updateUser($name, $password, $email)
+    public function updateUser($userName, $id, $email)
     {
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->dbh->prepare("UPDATE users SET name=:name, password=:password, email=:email WHERE email=:email");
+
+        $stmt = $this->dbh->prepare("UPDATE users SET name=:name, email=:email WHERE id=:id");
+        $stmt->bindParam(':id', $id, $this->userColumns["id"]["pdo_type"]);
+        $stmt->bindParam(':name', $userName, $this->userColumns["name"]["pdo_type"]);
         $stmt->bindParam(':email', $email, $this->userColumns["email"]["pdo_type"]);
-        $stmt->bindParam(':name', $name, $this->userColumns["name"]["pdo_type"]);
-        $stmt->bindParam(':password', $passwordHash, $this->userColumns["password"]["pdo_type"]);
         $stmt->execute();
+        return $stmt->rowCount();
     }
 
     public function createUser($name, $password, $email)
