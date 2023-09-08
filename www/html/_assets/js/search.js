@@ -5,7 +5,9 @@ const getBooksInfo = async (searcText) => {
     .get(`https://www.googleapis.com/books/v1/volumes?q=${searcText}`)
     .catch((err) => {
       alert("書籍情報の読み込みに失敗しました");
+      console.warn(err);
     });
+    
   return res.data.items;
 };
 

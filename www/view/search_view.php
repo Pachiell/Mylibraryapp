@@ -7,7 +7,7 @@
 	<title>検索</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="./_assets/css/search.css" rel="stylesheet">
+	<link href="../_assets/css/search.css" rel="stylesheet">
 	<?php include('../view/_template/lib.php'); ?>
 	<script src="../_assets/js/search.js" type="text/javascript">
 	</script>
